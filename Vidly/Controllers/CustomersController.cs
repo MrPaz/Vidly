@@ -28,15 +28,28 @@ namespace Vidly.Controllers
             var membershipTypes = _context.MembershipTypes.ToList();
             var viewModel = new CustomerFormViewModel
             {
+                Customer = new Customer(),
                 MembershipTypes = membershipTypes
             };
 
-            return View(viewModel);
+            return View("CustomerForm", viewModel);
         }  
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Save(Customer customer)
         {
+            if (!ModelState.IsValid)
+            {
+                var viewModel = new CustomerFormViewModel
+                {
+                    Customer = customer,
+                    MembershipTypes = _context.MembershipTypes.ToList()
+                };
+
+                return View("CustomerForm", viewModel);
+            }
+
             if (customer.Id == 0)
                 _context.Customers.Add(customer);
             else
@@ -86,21 +99,21 @@ namespace Vidly.Controllers
             return View("CustomerForm", viewModel);
         }
 
-        private IEnumerable<Customer> GetCustomers()
-        {
-            return new List<Customer>
-            {
-                new Customer
-                {
-                    Id = 1,
-                    Name = "John Smith"
-                },
-                new Customer
-                {
-                    Id = 2,
-                    Name = "Mary Williams"
-                }
-            };
-        }
+        //private IEnumerable<Customer> GetCustomers()
+        //{
+        //    return new List<Customer>
+        //    {
+        //        new Customer
+        //        {
+        //            Id = 1,
+        //            Name = "John Smith"
+        //        },
+        //        new Customer
+        //        {
+        //            Id = 2,
+        //            Name = "Mary Williams"
+        //        }
+        //    };
+        //}
     }
 }
