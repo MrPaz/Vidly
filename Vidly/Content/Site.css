@@ -1,6 +1,22 @@
 ﻿body {
     padding-top: 50px;
     padding-bottom: 20px;
+    font-size: 16px;
+}
+
+h1, .h1, h2, .h2, h3, .h3 {
+    margin-top: 24px;
+    margin-bottom: 24px;
+}
+
+a,
+.btn-link {
+    color: #2943FF;
+}
+
+a:hover,
+.btn-link:hover {
+    color: #3AD7E8;
 }
 
 /* Set padding to keep content from hitting the edges */
@@ -31,4 +47,37 @@ label.error {
 .input-validation-error,
 input.error {
     border: 2px solid red;
+}
+
+.navbar-inverse {
+    background-color: #2571E8;
+    border-color: #35B9FF;
+}
+
+.navbar-inverse
+.navbar-nav > li > a {
+    color: #ffffff;
+}
+
+.navbar-inverse
+.navbar-brand {
+    color: #ffffff;
+    font-size: 32px;
+}
+
+.btn-primary {
+    color: #ffffff;
+    background-color: #2943FF;
+    border-color: #2943C8;
+}
+
+.btn-primary:hover, .btn-primary:active, .btn-primary.active, .open > .dropdown-toggle.btn-primary {
+    color: #ffffff;
+    background-color: #2943FF;
+    border-color: #2943C8;
+}
+
+.pagination > .active > a, .pagination > .active > span, .pagination > .active > a:hover, .pagination > .active > span:hover, .pagination > .active > a:focus, .pagination > .active > span:focus {
+    background-color: #2943FF;
+    border-color: #2943C8;
 }
